@@ -1,4 +1,4 @@
-﻿using Prism.Mvvm;
+using Prism.Mvvm;
 
 namespace ParkingSpace.ViewModels
 {
@@ -10,7 +10,6 @@ namespace ParkingSpace.ViewModels
     //{
     //  string clientId = null;
     //  string redirectUri = null;
-
 
     //  var authenticator = new OAuth2Authenticator(
     //    clientId,

@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using ParkingSpace.Services;
-using ParkingSpace.Services.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
+using ParkingSpace.Resources;
 using Shiny;
 using Shiny.Prism;
+using Xamarin.Essentials.Implementation;
+using Xamarin.Essentials.Interfaces;
 
 namespace ParkingSpace
 {
@@ -10,8 +11,8 @@ namespace ParkingSpace
   {
     protected override void ConfigureServices(IServiceCollection services, IPlatform platform)
     {
-      // Register Stuff
-      services.AddScoped<IAuthenticationService, AuthenticationService>();
+      services.AddSingleton<ISecureStorage, SecureStorageImplementation>();
+      services.AddAuthenticationService();
     }
   }
 }

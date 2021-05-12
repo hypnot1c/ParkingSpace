@@ -38,4 +38,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\Authentication\PS.Xamarin.Authentication.Abstractions\PS.Xamarin.Authentication.Abstractions.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Authentication\PS.Xamarin.Authentication.SecureStorage\PS.Xamarin.Authentication.SecureStorage.csproj" />
+  </ItemGroup>
 </Project>

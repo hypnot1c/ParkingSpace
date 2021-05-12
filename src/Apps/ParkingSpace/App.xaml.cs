@@ -1,7 +1,8 @@
-﻿using ParkingSpace.Services.Abstractions;
+using System.Threading.Tasks;
 using ParkingSpace.ViewModels;
 using ParkingSpace.Views;
 using Prism.Ioc;
+using PS.Xamarin.Authentication;
 using Xamarin.Forms;
 
 namespace ParkingSpace
@@ -15,8 +16,8 @@ namespace ParkingSpace
     protected override async void OnInitialized()
     {
       InitializeComponent();
-      var auth = Container.Resolve<IAuthenticationService>();
-      var result = await NavigationService.NavigateAsync("MainView");
+
+      await this.NavigateToRootViewAsync();
     }
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -24,6 +25,15 @@ namespace ParkingSpace
       containerRegistry.RegisterForNavigation<NavigationPage>();
       containerRegistry.RegisterForNavigation<MainView, MainViewModel>();
       containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
+    }
+
+    private async Task NavigateToRootViewAsync()
+    {
+      var auth = this.Container.Resolve<IAuthenticationService>();
+
+      var startViewName = (await auth.IsAuthenticatedAsync()) ? "MainView" : "LoginView";
+
+      await NavigationService.NavigateAsync(startViewName);
     }
   }
 }
