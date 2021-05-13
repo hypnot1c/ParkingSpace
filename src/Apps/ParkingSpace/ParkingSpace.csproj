@@ -40,6 +40,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\Api\Clients\Google\Api.Google.Client.Abstractions\Api.Google.Client.Abstractions.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Api\Clients\Google\Api.Google.Client.Xamarin.Auth\Api.Google.Client.Xamarin.Auth.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Authentication\PS.Xamarin.Authentication.Abstractions\PS.Xamarin.Authentication.Abstractions.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Authentication\PS.Xamarin.Authentication.SecureStorage\PS.Xamarin.Authentication.SecureStorage.csproj" />
   </ItemGroup>

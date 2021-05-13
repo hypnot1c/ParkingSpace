@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>PS.Xamarin.Authentication</RootNamespace>
+    <RootNamespace>Api.Google.Client</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
+    <ProjectReference Include="..\Api.Google.Client.Model.Output\Api.Google.Client.Model.Output.csproj" />
   </ItemGroup>
 
 </Project>

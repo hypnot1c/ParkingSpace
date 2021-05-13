@@ -1,12 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ParkingSpace.Views.LoginView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+  <ContentPage.Content>
+    <StackLayout
+      VerticalOptions="CenterAndExpand"
+      HorizontalOptions="CenterAndExpand">
+      <Label
+        Text="Пожалуйста авторизуйтесь"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+
+      <Button
+        x:Name="SignInButton"
+        Text="Sign-in with Google"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Command="{Binding SignInCommand}"/>
+    </StackLayout>
+  </ContentPage.Content>
 </ContentPage>

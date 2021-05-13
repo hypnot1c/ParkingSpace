@@ -1,13 +1,14 @@
 using System.Threading.Tasks;
 using ParkingSpace.ViewModels;
 using ParkingSpace.Views;
+using Prism;
 using Prism.Ioc;
 using PS.Xamarin.Authentication;
 using Xamarin.Forms;
 
 namespace ParkingSpace
 {
-  public partial class App
+  public partial class App : PrismApplication
   {
     public App()
     {
@@ -33,7 +34,7 @@ namespace ParkingSpace
 
       var startViewName = (await auth.IsAuthenticatedAsync()) ? "MainView" : "LoginView";
 
-      await NavigationService.NavigateAsync(startViewName);
+      await this.NavigationService.NavigateAsync(startViewName);
     }
   }
 }

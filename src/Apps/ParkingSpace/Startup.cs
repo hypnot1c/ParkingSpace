@@ -12,7 +12,10 @@ namespace ParkingSpace
     protected override void ConfigureServices(IServiceCollection services, IPlatform platform)
     {
       services.AddSingleton<ISecureStorage, SecureStorageImplementation>();
-      services.AddAuthenticationService();
+
+      services.AddAuthenticationService(platform);
+
+      services.AddGoogleApiClient();
     }
   }
 }
