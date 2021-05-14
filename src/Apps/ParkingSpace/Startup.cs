@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using ParkingSpace.Resources;
 using Shiny;
@@ -16,6 +17,12 @@ namespace ParkingSpace
       services.AddAuthenticationService(platform);
 
       services.AddGoogleApiClient();
+
+      services.AddParkingSpaceWebApiClient();
+
+      services.AddTinyMapper();
+
+      services.AddMediatR(typeof(Startup));
     }
   }
 }

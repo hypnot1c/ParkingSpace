@@ -1,5 +1,7 @@
 using System;
 using System.Diagnostics;
+using MediatR;
+using ParkingSpace.Mediator;
 using ParkingSpace.Resources;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -14,20 +16,20 @@ namespace ParkingSpace.ViewModels
   {
     public LoginViewModel(
       INavigationService navigationService,
-      IAuthenticationService authenticationService,
+      IMediator mediator,
       GoogleProviderSettings googleProviderSettings
       )
     {
       this.SignInCommand = new DelegateCommand(this.OnSignInButton_Clicked);
 
       this._navigationService = navigationService;
-      this._authenticationService = authenticationService;
+      this._mediator = mediator;
       this._googleProviderSettings = googleProviderSettings;
     }
     public DelegateCommand SignInCommand { get; }
 
     private readonly INavigationService _navigationService;
-    private readonly IAuthenticationService _authenticationService;
+    private readonly IMediator _mediator;
     private readonly GoogleProviderSettings _googleProviderSettings;
 
     private void OnSignInButton_Clicked()
@@ -67,7 +69,8 @@ namespace ParkingSpace.ViewModels
 
       if (e.IsAuthenticated)
       {
-        await this._authenticationService.AuthenticateAsync(e.Account);
+        var authUserRequest = new AuthenticateUserRequest(e.Account);
+        await this._mediator.Send(authUserRequest);
 
         await this._navigationService.NavigateAsync("MainView");
       }

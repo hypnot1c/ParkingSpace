@@ -2,6 +2,9 @@ using System;
 using System.Threading.Tasks;
 using Api.Google.Client;
 using Microsoft.Extensions.DependencyInjection;
+using ParkingSpace.MappingProfiles;
+using PS.Web.Api.Client;
+using PS.Web.Api.Client.Abstractions;
 using PS.Xamarin.Authentication;
 using Shiny;
 using Xamarin.Auth;
@@ -83,6 +86,20 @@ namespace ParkingSpace.Resources
 
         return client;
       });
+
+      return services;
+    }
+
+    public static IServiceCollection AddParkingSpaceWebApiClient(this IServiceCollection services)
+    {
+      services.AddScoped<IParkingSpaceWebApiClient, ParkingSpaceWebApiClient>();
+
+      return services;
+    }
+
+    public static IServiceCollection AddTinyMapper(this IServiceCollection services)
+    {
+      UserMappingProfile.Init();
 
       return services;
     }
