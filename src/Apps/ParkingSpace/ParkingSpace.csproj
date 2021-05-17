@@ -26,18 +26,32 @@
     <PackageReference Include="Shiny.Prism" Version="8.0.62" />
     <PackageReference Include="TinyMapper" Version="3.0.3" />
     <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.2.2936" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\MainView.xaml.cs">
-      <DependentUpon>MainView.xaml</DependentUpon>
+    <Compile Update="Views\CalendarView.xaml.cs">
+      <DependentUpon>CalendarView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\XAML\Calendar\ContentViews\CalendarFooter.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\XAML\Calendar\DataTemplates\Calendar\CalendarHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoadingView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MasterDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -49,5 +63,6 @@
     <ProjectReference Include="..\..\BuildingBlocks\Api\Clients\ParkingSpace\PS.Web.Api.Client.SQLite\PS.Web.Api.Client.SQLite.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Authentication\PS.Xamarin.Authentication.Abstractions\PS.Xamarin.Authentication.Abstractions.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Authentication\PS.Xamarin.Authentication.SecureStorage\PS.Xamarin.Authentication.SecureStorage.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Models\PS.Model\PS.Model.csproj" />
   </ItemGroup>
 </Project>

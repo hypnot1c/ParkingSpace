@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:ParkingSpace.Views"
+             x:Class="ParkingSpace.Views.MasterDetailView">
+
+  <MasterDetailPage.Master>
+    <ContentPage Title="Menu"
+            Padding="0,40,0,0">
+      <StackLayout>
+        <Button Text="View A"
+                Command="{Binding NavigateCommand}"
+                CommandParameter="LoginView" />
+      </StackLayout>
+    </ContentPage>
+  </MasterDetailPage.Master>
+  <!--Add below code too-->
+  <MasterDetailPage.Detail>
+    <NavigationPage>
+      <x:Arguments>
+        <views:CalendarView></views:CalendarView>
+      </x:Arguments>
+    </NavigationPage>
+  </MasterDetailPage.Detail>
+</MasterDetailPage>

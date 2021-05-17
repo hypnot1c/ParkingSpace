@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ParkingSpace.Views.LoginView">
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ParkingSpace.Views.LoginView"
+             Title="Login Page">
   <ContentPage.Content>
     <StackLayout
       VerticalOptions="CenterAndExpand"
       HorizontalOptions="CenterAndExpand">
-      <Label
-        Text="Пожалуйста авторизуйтесь"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
+      <StackLayout IsVisible="{Binding ShowLoadingIndicator, Converter={xct:InvertedBoolConverter}}"
+        VerticalOptions="CenterAndExpand"
+        HorizontalOptions="CenterAndExpand">
+        <Label
+          Text="Пожалуйста авторизуйтесь"
+          VerticalOptions="Center" 
+          HorizontalOptions="Center" />
 
-      <Button
-        x:Name="SignInButton"
-        Text="Sign-in with Google"
-        VerticalOptions="Center"
-        HorizontalOptions="Center"
-        Command="{Binding SignInCommand}"/>
+        <Button
+          x:Name="SignInButton"
+          Text="Sign-in with Google"
+          VerticalOptions="Center"
+          HorizontalOptions="Center"
+          Command="{Binding SignInCommand}"/>
+      </StackLayout>
+
+      <ActivityIndicator IsRunning="true" IsVisible="{Binding ShowLoadingIndicator}" />
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

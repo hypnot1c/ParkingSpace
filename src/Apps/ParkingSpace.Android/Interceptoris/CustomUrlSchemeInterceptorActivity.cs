@@ -6,7 +6,7 @@ using Android.Content.PM;
 using Android.OS;
 using ParkingSpace.Resources;
 
-namespace ParkingSpace.Droid
+namespace ParkingSpace.Droid.Interceptoris
 {
   [Activity(Label = "CustomUrlSchemeInterceptorActivity", NoHistory = true, LaunchMode = LaunchMode.SingleTop)]
   [IntentFilter(

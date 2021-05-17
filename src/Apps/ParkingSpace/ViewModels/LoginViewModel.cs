@@ -28,12 +28,20 @@ namespace ParkingSpace.ViewModels
     }
     public DelegateCommand SignInCommand { get; }
 
+    private bool _showLoadingIndicator;
+    public bool ShowLoadingIndicator
+    {
+      get => _showLoadingIndicator;
+      set => SetProperty(ref _showLoadingIndicator, value);
+    }
+
     private readonly INavigationService _navigationService;
     private readonly IMediator _mediator;
     private readonly GoogleProviderSettings _googleProviderSettings;
 
     private void OnSignInButton_Clicked()
     {
+      this.ShowLoadingIndicator = true;
       string clientId = this._googleProviderSettings.ClientId;
       string redirectUri = this._googleProviderSettings.RedirectUri;
 
@@ -72,7 +80,7 @@ namespace ParkingSpace.ViewModels
         var authUserRequest = new AuthenticateUserRequest(e.Account);
         await this._mediator.Send(authUserRequest);
 
-        await this._navigationService.NavigateAsync("MainView");
+        await this._navigationService.NavigateAsync("MasterDetailView");
       }
     }
 

@@ -2,9 +2,9 @@ using Prism.Mvvm;
 
 namespace ParkingSpace.ViewModels
 {
-  public class MainViewModel : BindableBase
+  public class CalendarViewModel : BindableBase
   {
-    public MainViewModel()
+    public CalendarViewModel()
     {
     }
     private string _message;

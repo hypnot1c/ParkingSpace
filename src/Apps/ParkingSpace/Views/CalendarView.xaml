@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:extControls="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
+             xmlns:controls="clr-namespace:ParkingSpace.Resources"
+             x:Class="ParkingSpace.Views.CalendarView">
+  <NavigationPage.TitleView>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="5">
+      <xct:AvatarView HorizontalOptions="End">
+        <xct:AvatarView.Source>
+          <UriImageSource Uri="{Binding User.AvatarUrl}" />
+        </xct:AvatarView.Source>
+      </xct:AvatarView>
+    </StackLayout>
+  </NavigationPage.TitleView>
+  <StackLayout>
+    <extControls:Calendar
+        SelectedDate="{Binding SelectedDate}"
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand">
+
+      <extControls:Calendar.HeaderSectionTemplate>
+        <controls:CalendarHeader />
+      </extControls:Calendar.HeaderSectionTemplate>
+
+      <extControls:Calendar.FooterSectionTemplate>
+        <DataTemplate>
+          <controls:CalendarFooter />
+        </DataTemplate>
+      </extControls:Calendar.FooterSectionTemplate>
+
+    </extControls:Calendar>
+  </StackLayout>
+
+</ContentPage>

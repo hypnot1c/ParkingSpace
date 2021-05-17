@@ -23,6 +23,8 @@ namespace ParkingSpace
       services.AddTinyMapper();
 
       services.AddMediatR(typeof(Startup));
+
+      services.AddSingleton<SessionService>();
     }
   }
 }

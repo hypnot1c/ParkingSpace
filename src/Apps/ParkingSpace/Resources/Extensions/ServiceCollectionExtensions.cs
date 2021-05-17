@@ -4,10 +4,10 @@ using Api.Google.Client;
 using Microsoft.Extensions.DependencyInjection;
 using ParkingSpace.MappingProfiles;
 using PS.Web.Api.Client;
-using PS.Web.Api.Client.Abstractions;
 using PS.Xamarin.Authentication;
 using Shiny;
 using Xamarin.Auth;
+using Xamarin.Forms;
 
 namespace ParkingSpace.Resources
 {
@@ -92,7 +92,11 @@ namespace ParkingSpace.Resources
 
     public static IServiceCollection AddParkingSpaceWebApiClient(this IServiceCollection services)
     {
-      services.AddScoped<IParkingSpaceWebApiClient, ParkingSpaceWebApiClient>();
+      services.AddScoped<IParkingSpaceWebApiClient, ParkingSpaceWebApiClient>(sp =>
+      {
+        string dbPath = DependencyService.Get<IPath>().GetDatabasePath("ParkingSpace.db");
+        return new ParkingSpaceWebApiClient(dbPath);
+      });
 
       return services;
     }

@@ -3,7 +3,6 @@ using ParkingSpace.ViewModels;
 using ParkingSpace.Views;
 using Prism;
 using Prism.Ioc;
-using PS.Xamarin.Authentication;
 using Xamarin.Forms;
 
 namespace ParkingSpace
@@ -24,17 +23,15 @@ namespace ParkingSpace
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
       containerRegistry.RegisterForNavigation<NavigationPage>();
-      containerRegistry.RegisterForNavigation<MainView, MainViewModel>();
+      containerRegistry.RegisterForNavigation<LoadingView, LoadingViewModel>();
+      containerRegistry.RegisterForNavigation<MasterDetailView, MasterDetailViewModel>();
+      containerRegistry.RegisterForNavigation<CalendarView, CalendarViewModel>();
       containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
     }
 
     private async Task NavigateToRootViewAsync()
     {
-      var auth = this.Container.Resolve<IAuthenticationService>();
-
-      var startViewName = (await auth.IsAuthenticatedAsync()) ? "MainView" : "LoginView";
-
-      await this.NavigationService.NavigateAsync(startViewName);
+      await this.NavigationService.NavigateAsync("LoadingView");
     }
   }
 }
