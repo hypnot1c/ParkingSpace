@@ -1,5 +1,5 @@
-using System.Diagnostics;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using ParkingSpace.ViewModels;
 using ParkingSpace.Views;
 using Prism;
@@ -15,16 +15,20 @@ namespace ParkingSpace
     {
     }
 
+    private ILogger<App> _logger;
+
     protected override async void OnInitialized()
     {
       InitializeComponent();
+
+      this._logger = this.Container.Resolve<ILogger<App>>();
 
       await this.NavigateToRootViewAsync();
     }
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
-      containerRegistry.RegisterForNavigation<MasterDetailView, MasterDetailViewModel>();
+      containerRegistry.RegisterForNavigation<FlyoutView, FlyoutViewModel>();
       containerRegistry.RegisterForNavigation<NavigationPage>();
       containerRegistry.RegisterForNavigation<LoadingView, LoadingViewModel>();
       containerRegistry.RegisterForNavigation<CalendarView, CalendarViewModel>();
@@ -33,13 +37,13 @@ namespace ParkingSpace
 
     private async Task NavigateToRootViewAsync()
     {
-      await this.NavigationService.NavigateAsync("LoadingView");
+      await this.NavigationService.NavigateAsync(nameof(LoadingView));
     }
 
     protected override void OnNavigationError(INavigationError navigationError)
     {
       base.OnNavigationError(navigationError);
-      Debug.WriteLine(navigationError.Exception.Message);
+      this._logger.LogError("Navigation error occured {0}", navigationError.Exception.Message);
     }
   }
 }

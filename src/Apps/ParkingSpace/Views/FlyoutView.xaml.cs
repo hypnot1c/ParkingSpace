@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace ParkingSpace.Views
 {
   [XamlCompilation(XamlCompilationOptions.Compile)]
-  public partial class MasterDetailView : MasterDetailPage
+  public partial class FlyoutView : FlyoutPage
   {
-    public MasterDetailView()
+    public FlyoutView()
     {
       InitializeComponent();
     }

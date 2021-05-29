@@ -22,7 +22,7 @@
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
-    <PackageReference Include="Prism.Forms" Version="8.0.0.1909" />
+    <PackageReference Include="Prism.Forms" Version="8.1.97" />
     <PackageReference Include="Prism.Microsoft.DependencyInjection.Extensions" Version="8.0.62" />
     <PackageReference Include="Shiny.Prism" Version="8.0.62" />
     <PackageReference Include="TinyMapper" Version="3.0.3" />
@@ -36,6 +36,9 @@
   <ItemGroup>
     <Compile Update="Views\CalendarView.xaml.cs">
       <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\FlyoutView.xaml.cs">
+      <DependentUpon>FlyoutView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -52,7 +55,7 @@
     <EmbeddedResource Update="Views\LoginView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MasterDetailView.xaml">
+    <EmbeddedResource Update="Views\FlyoutView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

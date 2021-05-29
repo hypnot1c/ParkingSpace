@@ -8,10 +8,10 @@ using Prism.Navigation;
 
 namespace ParkingSpace.ViewModels
 {
-  public class MasterDetailViewModel : BindableBase
+  public class FlyoutViewModel : BindableBase
   {
-    public MasterDetailViewModel(
-      ILogger<MasterDetailViewModel> logger,
+    public FlyoutViewModel(
+      ILogger<FlyoutViewModel> logger,
       INavigationService navigationService
       )
     {
@@ -41,7 +41,7 @@ namespace ParkingSpace.ViewModels
 
     private readonly INavigationService _navigationService;
 
-    public ILogger<MasterDetailViewModel> Logger { get; }
+    public ILogger<FlyoutViewModel> Logger { get; }
     public ObservableCollection<MenuItem> MenuItems { get; set; }
 
     private MenuItem _selectedMenuItem;
@@ -56,7 +56,7 @@ namespace ParkingSpace.ViewModels
     private async void NavigateCommandExecuted()
     {
       var newPath = nameof(Xamarin.Forms.NavigationPage) + "/" + SelectedMenuItem.PageName;
-      await this._navigationService.NavigateAsync(newPath);
+      var res = await this._navigationService.NavigateAsync(newPath);
     }
   }
 }

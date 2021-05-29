@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Api.Google.Client;
 using ParkingSpace.Resources;
+using ParkingSpace.Views;
 using Prism.Mvvm;
 using Prism.Navigation;
 using PS.Web.Api.Client;
@@ -36,7 +37,7 @@ namespace ParkingSpace.ViewModels
 
     public async void OnNavigatedTo(INavigationParameters parameters)
     {
-      var targetView = "LoginView";
+      var targetView = nameof(LoginView);
 
       var isAuthenticated = await this._authenticationService.IsAuthenticatedAsync();
 
@@ -50,7 +51,7 @@ namespace ParkingSpace.ViewModels
 
         await this.InitSessionAsync();
 
-        targetView = "MasterDetailView";
+        targetView = nameof(FlyoutView);
       }
 
       await this._navigationService.NavigateAsync(targetView);
