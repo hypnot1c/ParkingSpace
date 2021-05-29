@@ -21,6 +21,7 @@
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
     <PackageReference Include="Prism.Forms" Version="8.0.0.1909" />
     <PackageReference Include="Prism.Microsoft.DependencyInjection.Extensions" Version="8.0.62" />
     <PackageReference Include="Shiny.Prism" Version="8.0.62" />
@@ -64,5 +65,15 @@
     <ProjectReference Include="..\..\BuildingBlocks\Authentication\PS.Xamarin.Authentication.Abstractions\PS.Xamarin.Authentication.Abstractions.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Authentication\PS.Xamarin.Authentication.SecureStorage\PS.Xamarin.Authentication.SecureStorage.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Models\PS.Model\PS.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Views\LoadingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\XAML\Controls\" />
   </ItemGroup>
 </Project>

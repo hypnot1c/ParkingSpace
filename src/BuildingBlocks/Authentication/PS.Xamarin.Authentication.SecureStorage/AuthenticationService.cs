@@ -70,7 +70,7 @@ namespace PS.Xamarin.Authentication
         await this._secureStorage.SetAsync(this._options.SecureStorageKeys.UserRefreshToken, refreshToken);
       }
 
-      this._account = await this.GetUserAccountAsync();
+      this._account = account;
     }
 
     public async Task<Account> GetUserAccountAsync()

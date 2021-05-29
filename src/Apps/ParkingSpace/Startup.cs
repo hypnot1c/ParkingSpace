@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using ParkingSpace.Resources;
 using Shiny;
 using Shiny.Prism;
@@ -12,9 +13,11 @@ namespace ParkingSpace
   {
     protected override void ConfigureServices(IServiceCollection services, IPlatform platform)
     {
+      services.AddLogging();
+
       services.AddSingleton<ISecureStorage, SecureStorageImplementation>();
 
-      services.AddAuthenticationService(platform);
+      services.AddAuthenticationService();
 
       services.AddGoogleApiClient();
 
@@ -25,6 +28,15 @@ namespace ParkingSpace
       services.AddMediatR(typeof(Startup));
 
       services.AddSingleton<SessionService>();
+    }
+
+    protected override void ConfigureLogging(ILoggingBuilder builder, IPlatform platform)
+    {
+      base.ConfigureLogging(builder, platform);
+
+      #if DEBUG
+      builder.AddDebug();
+      #endif
     }
   }
 }

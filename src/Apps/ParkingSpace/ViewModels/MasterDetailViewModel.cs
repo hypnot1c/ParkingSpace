@@ -1,40 +1,62 @@
+using System.Collections.ObjectModel;
+using Microsoft.Extensions.Logging;
 using ParkingSpace.Resources;
+using ParkingSpace.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using PS.Model;
 
 namespace ParkingSpace.ViewModels
 {
   public class MasterDetailViewModel : BindableBase
   {
     public MasterDetailViewModel(
-      INavigationService navigationService,
-      SessionService sessionService
+      ILogger<MasterDetailViewModel> logger,
+      INavigationService navigationService
       )
     {
       this._navigationService = navigationService;
-      this._sessionService = sessionService;
+      this.Logger = logger;
 
-      this.NavigateCommand = new DelegateCommand<string>(this.NavigateCommandExecuted);
-      this.User = this._sessionService.User;
+      this.MenuItems = new ObservableCollection<MenuItem>();
+
+      MenuItems.Add(new MenuItem()
+      {
+        Icon = "ic_viewa",
+        PageName = nameof(LoginView),
+        Title = "Login"
+      });
+
+      MenuItems.Add(new MenuItem()
+      {
+        Icon = "ic_viewb",
+        PageName = nameof(CalendarView),
+        Title = "Calendar"
+      });
+
+      this.NavigateCommand = new DelegateCommand(this.NavigateCommandExecuted);
+      this.SelectedMenuItem = this.MenuItems[1];
+      this.NavigateCommandExecuted();
     }
 
     private readonly INavigationService _navigationService;
-    private readonly SessionService _sessionService;
 
-    public DelegateCommand<string> NavigateCommand { get; }
+    public ILogger<MasterDetailViewModel> Logger { get; }
+    public ObservableCollection<MenuItem> MenuItems { get; set; }
 
-    private UserSessionModel _user;
-    public UserSessionModel User
+    private MenuItem _selectedMenuItem;
+    public MenuItem SelectedMenuItem
     {
-      get => _user;
-      set => SetProperty(ref _user, value);
+      get => _selectedMenuItem;
+      set => SetProperty(ref _selectedMenuItem, value);
     }
 
-    private async void NavigateCommandExecuted(string path)
+    public DelegateCommand NavigateCommand { get; }
+
+    private async void NavigateCommandExecuted()
     {
-      await this._navigationService.NavigateAsync($"NavigationPage/{path}");
+      var newPath = nameof(Xamarin.Forms.NavigationPage) + "/" + SelectedMenuItem.PageName;
+      await this._navigationService.NavigateAsync(newPath);
     }
   }
 }

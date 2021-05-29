@@ -16,6 +16,7 @@
   </NavigationPage.TitleView>
   <StackLayout>
     <extControls:Calendar
+      x:Name="calendar"
         SelectedDate="{Binding SelectedDate}"
         VerticalOptions="FillAndExpand"
         HorizontalOptions="FillAndExpand">
@@ -29,8 +30,9 @@
           <controls:CalendarFooter />
         </DataTemplate>
       </extControls:Calendar.FooterSectionTemplate>
-
+      <extControls:Calendar.GestureRecognizers>
+        <SwipeGestureRecognizer Direction="Down" Swiped="ToggleCalendarSectionVisibility" />
+      </extControls:Calendar.GestureRecognizers>
     </extControls:Calendar>
   </StackLayout>
-
 </ContentPage>

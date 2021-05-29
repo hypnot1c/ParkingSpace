@@ -2,10 +2,10 @@ using System;
 using System.Threading.Tasks;
 using Api.Google.Client;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using ParkingSpace.MappingProfiles;
 using PS.Web.Api.Client;
 using PS.Xamarin.Authentication;
-using Shiny;
 using Xamarin.Auth;
 using Xamarin.Forms;
 
@@ -13,14 +13,14 @@ namespace ParkingSpace.Resources
 {
   static class ServiceCollectionExtensions
   {
-    public static IServiceCollection AddAuthenticationService(this IServiceCollection services, IPlatform platform)
+    public static IServiceCollection AddAuthenticationService(this IServiceCollection services)
     {
       services.AddSingleton<GoogleProviderSettings>(sp =>
       {
         var clientId = String.Empty;
         var redirectUri = String.Empty;
 
-        if (platform.Manufacturer.ToUpper() == "GOOGLE")
+        if (Device.RuntimePlatform == Device.Android)
         {
           clientId = "51862517676-v7j9degm2ail3gldk889n798ng5cku3m.apps.googleusercontent.com";
           redirectUri = "com.googleusercontent.apps.51862517676-v7j9degm2ail3gldk889n798ng5cku3m:/oauth2redirect";
@@ -66,6 +66,7 @@ namespace ParkingSpace.Resources
       services.AddScoped<IGoogleApiClient, GoogleApiClient>(sp =>
       {
         var authService = sp.GetRequiredService<IAuthenticationService>();
+        var logger = sp.GetRequiredService<ILogger<GoogleApiClient>>();
 
         Func<Task<Account>> accountProvider = async () =>
         {
@@ -82,7 +83,7 @@ namespace ParkingSpace.Resources
         };
 
 
-        var client = new GoogleApiClient(accountProvider);
+        var client = new GoogleApiClient(logger, accountProvider);
 
         return client;
       });

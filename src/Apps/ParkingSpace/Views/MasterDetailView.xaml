@@ -1,25 +1,56 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage  xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:ParkingSpace.Views"
-             x:Class="ParkingSpace.Views.MasterDetailView">
+<MasterDetailPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+  x:Class="ParkingSpace.Views.MasterDetailView">
 
   <MasterDetailPage.Master>
-    <ContentPage Title="Menu"
-            Padding="0,40,0,0">
-      <StackLayout>
-        <Button Text="View A"
-                Command="{Binding NavigateCommand}"
-                CommandParameter="LoginView" />
-      </StackLayout>
-    </ContentPage>
-  </MasterDetailPage.Master>
-  <!--Add below code too-->
-  <MasterDetailPage.Detail>
-    <NavigationPage>
+    <NavigationPage Title="ParkingSpace">
       <x:Arguments>
-        <views:CalendarView></views:CalendarView>
+        <ContentPage
+          Title="Menu">
+          <ListView
+            ItemsSource="{Binding MenuItems}"
+            SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+            SeparatorColor="LightGray"
+            RowHeight="60"
+            SeparatorVisibility="Default">
+
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <StackLayout
+                    VerticalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    Padding="20,10,0,10"
+                    Spacing="20">
+
+                    <Image
+                      Source="{Binding Icon}"
+                      WidthRequest="35"
+                      HeightRequest="35"
+                      VerticalOptions="Center" />
+
+                    <Label
+                      Text="{Binding Title}"
+                      FontSize="Medium"
+                      VerticalOptions="Center"
+                      TextColor="Black"/>
+                  </StackLayout>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.Behaviors>
+              <b:EventToCommandBehavior
+                EventName="ItemTapped" 
+                Command="{Binding NavigateCommand}" />
+            </ListView.Behaviors>
+
+          </ListView>
+        </ContentPage>
       </x:Arguments>
     </NavigationPage>
-  </MasterDetailPage.Detail>
+  </MasterDetailPage.Master>
 </MasterDetailPage>

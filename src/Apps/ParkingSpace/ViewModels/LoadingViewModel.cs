@@ -48,7 +48,7 @@ namespace ParkingSpace.ViewModels
           await this._authenticationService.RefreshAccessTokenAsync();
         }
 
-        await this.InitSession();
+        await this.InitSessionAsync();
 
         targetView = "MasterDetailView";
       }
@@ -56,18 +56,13 @@ namespace ParkingSpace.ViewModels
       await this._navigationService.NavigateAsync(targetView);
     }
 
-    private async Task InitSession()
+    private async Task InitSessionAsync()
     {
-      var isAuthenticated = await this._authenticationService.IsAuthenticatedAsync();
+      var authUser = await this._googleApiClient.GetUserAsync();
 
-      if (isAuthenticated)
-      {
-        var authUser = await this._googleApiClient.GetUserAsync();
+      var user = await this._parkingSpaceWebApiClient.User_GetAsync(authUser.Email);
 
-        var user = await this._parkingSpaceWebApiClient.User_GetAsync(authUser.Email);
-
-        this._sessionService.SetSessionUser(user);
-      }
+      this._sessionService.SetSessionUser(user);
     }
   }
 }
