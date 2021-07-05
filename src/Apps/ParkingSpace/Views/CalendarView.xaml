@@ -11,6 +11,9 @@
         <xct:AvatarView.Source>
           <UriImageSource Uri="{Binding User.AvatarUrl}" />
         </xct:AvatarView.Source>
+        <xct:AvatarView.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding AvatarTapCommand}" />
+        </xct:AvatarView.GestureRecognizers>
       </xct:AvatarView>
     </StackLayout>
   </NavigationPage.TitleView>

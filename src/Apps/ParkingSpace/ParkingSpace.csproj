@@ -27,7 +27,7 @@
     <PackageReference Include="Shiny.Prism" Version="8.0.62" />
     <PackageReference Include="TinyMapper" Version="3.0.3" />
     <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.2.2936" />
@@ -43,19 +43,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\XAML\Calendar\ContentViews\CalendarFooter.xaml">
+    <EmbeddedResource Update="Resources\XAML\Controls\Calendar\ContentViews\CalendarFooter.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\XAML\Calendar\DataTemplates\Calendar\CalendarHeader.xaml">
+    <EmbeddedResource Update="Resources\XAML\Controls\Calendar\DataTemplates\Calendar\CalendarHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoadingView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LoginView.xaml">
+    <EmbeddedResource Update="Views\Auth\LoginView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\FlyoutView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UserProfileView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -74,9 +77,5 @@
     <None Update="Views\LoadingView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\XAML\Controls\" />
   </ItemGroup>
 </Project>
