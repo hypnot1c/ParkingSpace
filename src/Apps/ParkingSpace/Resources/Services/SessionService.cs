@@ -1,6 +1,6 @@
 using Nelibur.ObjectMapper;
 using PS.Model;
-using PS.Web.Api.Client.Model.Output;
+using PS.Web.Api.Model.Output;
 
 namespace ParkingSpace.Resources
 {

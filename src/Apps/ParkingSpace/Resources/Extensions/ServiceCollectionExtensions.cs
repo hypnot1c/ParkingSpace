@@ -93,11 +93,12 @@ namespace ParkingSpace.Resources
 
     public static IServiceCollection AddParkingSpaceWebApiClient(this IServiceCollection services)
     {
-      services.AddScoped<IParkingSpaceWebApiClient, ParkingSpaceWebApiClient>(sp =>
-      {
-        string dbPath = DependencyService.Get<IPath>().GetDatabasePath("ParkingSpace.db");
-        return new ParkingSpaceWebApiClient(dbPath);
-      });
+      services
+        .AddParkingSpaceWebApiClient(builder => {
+          builder.ConfigureBase("http://192.168.0.3:5000");
+        })
+        .AddParkingSpaceWebApiAccessTokenProvider<ParkingSpaceWebApiAccessTokenProvider>()
+        ;
 
       return services;
     }

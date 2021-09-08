@@ -8,6 +8,7 @@ namespace PS.Xamarin.Authentication
     Task<bool> IsAuthenticatedAsync();
     Task<bool> IsAccessTokenExpiredAsync();
     Task AuthenticateAsync(Account account);
+    void SignOut();
     Task<Account> GetUserAccountAsync();
     Task RefreshAccessTokenAsync();
   }

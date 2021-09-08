@@ -1,8 +1,9 @@
 using System;
-using System.Diagnostics;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using ParkingSpace.Mediator;
 using ParkingSpace.Resources;
+using ParkingSpace.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -17,7 +18,8 @@ namespace ParkingSpace.ViewModels
     public LoginViewModel(
       INavigationService navigationService,
       IMediator mediator,
-      GoogleProviderSettings googleProviderSettings
+      GoogleProviderSettings googleProviderSettings,
+      ILogger<LoginViewModel> logger
       )
     {
       this.SignInCommand = new DelegateCommand(this.OnSignInButton_Clicked);
@@ -25,6 +27,7 @@ namespace ParkingSpace.ViewModels
       this._navigationService = navigationService;
       this._mediator = mediator;
       this._googleProviderSettings = googleProviderSettings;
+      this._logger = logger;
     }
     public DelegateCommand SignInCommand { get; }
 
@@ -38,6 +41,7 @@ namespace ParkingSpace.ViewModels
     private readonly INavigationService _navigationService;
     private readonly IMediator _mediator;
     private readonly GoogleProviderSettings _googleProviderSettings;
+    private readonly ILogger<LoginViewModel> _logger;
 
     private void OnSignInButton_Clicked()
     {
@@ -55,14 +59,14 @@ namespace ParkingSpace.ViewModels
         null,
         true
         );
-
+      
       authenticator.Completed += OnAuthCompleted;
       authenticator.Error += OnAuthError;
 
       AuthenticationState.Authenticator = authenticator;
 
       var presenter = new OAuthLoginPresenter();
-
+      
       presenter.Login(authenticator);
     }
 
@@ -74,13 +78,13 @@ namespace ParkingSpace.ViewModels
         authenticator.Completed -= OnAuthCompleted;
         authenticator.Error -= OnAuthError;
       }
-
+      
       if (e.IsAuthenticated)
       {
         var authUserRequest = new AuthenticateUserRequest(e.Account);
         await this._mediator.Send(authUserRequest);
 
-        await this._navigationService.NavigateAsync("MasterDetailView");
+        await this._navigationService.NavigateAsync(nameof(FlyoutView));
       }
     }
 
@@ -93,7 +97,7 @@ namespace ParkingSpace.ViewModels
         authenticator.Error -= OnAuthError;
       }
 
-      Debug.WriteLine("Authentication error: " + e.Message);
+      this._logger.LogError("Authentication error: " + e.Message);
     }
   }
 }

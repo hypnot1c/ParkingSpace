@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PS.Data.Master.Context\PS.Data.Master.Context.csproj" />
+    <ProjectReference Include="..\PS.DataService.Abstractions\PS.DataService.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

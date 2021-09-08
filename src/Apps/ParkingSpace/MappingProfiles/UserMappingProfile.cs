@@ -6,7 +6,7 @@ namespace ParkingSpace.MappingProfiles
   {
     public static void Init()
     {
-      TinyMapper.Bind<Api.Google.Client.Model.Output.UserOutputModel, PS.Web.Api.Client.Model.Input.UserInputModel>(config =>
+      TinyMapper.Bind<Api.Google.Client.Model.Output.UserOutputModel, PS.Web.Api.Model.Input.UserInputModel>(config =>
       {
         config.Bind(s => s.GivenName, d => d.Firstname);
         config.Bind(s => s.FamilyName, d => d.Lastname);
@@ -16,7 +16,7 @@ namespace ParkingSpace.MappingProfiles
         config.Ignore(s => s.Name);
       });
 
-      TinyMapper.Bind<PS.Web.Api.Client.Model.Output.UserOutputModel, PS.Model.UserSessionModel>(config =>
+      TinyMapper.Bind<PS.Web.Api.Model.Output.UserOutputModel, PS.Model.UserSessionModel>(config =>
       {
         config.Bind(s => s.Id, d => d.Id);
         config.Bind(s => s.Firstname, d => d.Firstname);

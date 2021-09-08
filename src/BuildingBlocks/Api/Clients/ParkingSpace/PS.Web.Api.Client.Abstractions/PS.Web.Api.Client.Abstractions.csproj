@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PS.Web.Api.Client.Model.Input\PS.Web.Api.Client.Model.Input.csproj" />
-    <ProjectReference Include="..\PS.Web.Api.Client.Model.Output\PS.Web.Api.Client.Model.Output.csproj" />
+    <ProjectReference Include="..\..\..\Models\PS.Web.Api\PS.Web.Api.Model.Input\PS.Web.Api.Model.Input.csproj" />
+    <ProjectReference Include="..\..\..\Models\PS.Web.Api\PS.Web.Api.Model.Output\PS.Web.Api.Model.Output.csproj" />
   </ItemGroup>
 
 </Project>

@@ -73,6 +73,15 @@ namespace PS.Xamarin.Authentication
       this._account = account;
     }
 
+    public void SignOut()
+    {
+      this._secureStorage.Remove(this._options.SecureStorageKeys.UserAccount);
+      this._secureStorage.Remove(this._options.SecureStorageKeys.UserTokenIssueDate);
+      this._secureStorage.Remove(this._options.SecureStorageKeys.UserRefreshToken);
+
+      this._account = null;
+    }
+
     public async Task<Account> GetUserAccountAsync()
     {
       if (this._account is null)

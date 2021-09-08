@@ -8,7 +8,11 @@ namespace PS.Data.Master.Context
   {
     public void Configure(EntityTypeBuilder<UserModel> builder)
     {
+      builder.ToTable("User");
+
       builder.HasKey(p => p.Id);
+
+      builder.Ignore(p => p.AvatarUrl);
     }
   }
 }

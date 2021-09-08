@@ -5,7 +5,7 @@ using MediatR;
 using Nelibur.ObjectMapper;
 using ParkingSpace.Resources;
 using PS.Web.Api.Client;
-using PS.Web.Api.Client.Model.Input;
+using PS.Web.Api.Model.Input;
 
 namespace ParkingSpace.Mediator
 {
@@ -32,10 +32,9 @@ namespace ParkingSpace.Mediator
 
       var userInputModel = TinyMapper.Map<UserInputModel>(googleUser);
 
-      var user = await this._psWebApiClient.User_EnsureCreated(userInputModel);
+      var user = await this._psWebApiClient.Users.EnsureCreated(userInputModel);
 
-      //this._sessionService.SetSessionUser(user);
-
+      this._sessionService.SetSessionUser(user);
     }
   }
 }

@@ -1,3 +1,5 @@
+using System.Reflection;
+using Extensions.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PS.Data.Master.Model;
 
@@ -12,8 +14,7 @@ namespace PS.Data.Master.Context
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       base.OnModelCreating(modelBuilder);
-      modelBuilder.ApplyConfiguration(new UserConfiguration());
-      //modelBuilder.UseEntityTypeConfiguration(typeof(MasterContext).GetTypeInfo().Assembly);
+      modelBuilder.UseEntityTypeConfiguration(typeof(MasterContext).GetTypeInfo().Assembly);
     }
 
     public DbSet<UserModel> Users { get; set; }
