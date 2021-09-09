@@ -32,6 +32,9 @@ namespace PS.Web.Api.Versions.V1
               case int id:
                 userId = id;
                 break;
+              case string email:
+                userId = await this.DataService.Users.GetIdByEmail(email);
+                break;
               default:
                 this.Logger.LogInformation("Unknown resource parameter for type {0}", requirement.TargetResourceType.Name);
                 return;

@@ -36,5 +36,22 @@ namespace PS.DataService
 
       return userExists;
     }
+
+    public async Task<int> GetIdByEmail(string email)
+    {
+      var userId = await this._memoryCache.GetOrCreateAsync<int>($"users-{email}-id", async entry =>
+      {
+        var result = await this._masterContext.Users
+          .Where(u => u.Email.ToLower() == email.ToLower())
+          .Select(u => u.Id)
+          .SingleOrDefaultAsync()
+          ;
+
+        entry.SetSlidingExpiration(TimeSpan.FromHours(1));
+        return result;
+      });
+
+      return userId;
+    }
   }
 }

@@ -10,6 +10,12 @@ namespace PS.Web.Api.Versions.V1
       this.Id = id;
     }
 
-    public int Id { get; set; }
+    public UserGetRequest(string email)
+    {
+      this.Email = email;
+    }
+
+    public int? Id { get; set; }
+    public string Email { get; set; }
   }
 }

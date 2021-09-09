@@ -34,6 +34,20 @@ namespace PS.Web.Api.Client
       }
     }
 
+    public async Task<UserOutputModel> Get(string email)
+    {
+      try
+      {
+        var response = await this._http.Get(email);
+
+        return response.Result;
+      }
+      catch (ApiException ex)
+      {
+        throw new ParkingSpaceWebApiClientException($"An error occuted on the request. See more details in the inner exception.", ex);
+      }
+    }
+
     public async Task<UserOutputModel> EnsureCreated(UserInputModel im)
     {
       try

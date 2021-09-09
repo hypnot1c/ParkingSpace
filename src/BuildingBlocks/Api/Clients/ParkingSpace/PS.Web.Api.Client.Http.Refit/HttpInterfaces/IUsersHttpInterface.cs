@@ -12,6 +12,9 @@ namespace PS.Web.Api.Client
     [Get("/v1/users/{id}")]
     Task<OkApiResponse<UserOutputModel>> Get(int id);
 
+    [Get("/v1/users/{email}")]
+    Task<OkApiResponse<UserOutputModel>> Get(string email);
+
     [Post("/v1/users/ensure-created")]
     Task<OkApiResponse<UserOutputModel>> EnsureCreated(UserInputModel im);
   }

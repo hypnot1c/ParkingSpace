@@ -27,11 +27,26 @@ namespace PS.Web.Api.Versions.V1
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     [AuthorizeResource(typeof(UserModel), typeof(UserExistsRequirement), StatusCodes.Status404NotFound, "User not found")]
     public async Task<ActionResult<UserOutputModel>> Get(int id)
     {
       var request = new UserGetRequest(id);
+      var user = await this.Mediator.Send(request);
+
+      return Ok(user);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpGet("{email}")]
+    [AuthorizeResource(typeof(UserModel), typeof(UserExistsRequirement), StatusCodes.Status404NotFound, "User not found")]
+    public async Task<ActionResult<UserOutputModel>> Get(string email)
+    {
+      var request = new UserGetRequest(email);
       var user = await this.Mediator.Send(request);
 
       return Ok(user);

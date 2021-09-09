@@ -7,6 +7,7 @@ namespace PS.Web.Api.Client
   public interface IUsersArea
   {
     Task<UserOutputModel> Get(int id);
+    Task<UserOutputModel> Get(string email);
     Task<UserOutputModel> EnsureCreated(UserInputModel user);
   }
 }
