@@ -25,20 +25,20 @@ namespace PS.Web.Api.Client
             {
               http.BaseAddress = new Uri(opts.BaseUrl);
             })
-            .AddHttpMessageHandler<AccessTokenDelegatingHandler>()
+            .AddHttpMessageHandler<BearerTokenDelegatingHandler>()
             ;
         }
         );
 
-      services.AddScoped<AccessTokenDelegatingHandler>();
+      services.AddScoped<BearerTokenDelegatingHandler>();
       services.AddDefaults();
 
       return services;
     }
 
-    public static IServiceCollection AddParkingSpaceWebApiAccessTokenProvider<T>(this IServiceCollection services) where T : class, IAccessTokenProvider
+    public static IServiceCollection AddParkingSpaceWebApiBearerTokenProvider<T>(this IServiceCollection services) where T : class, IBearerTokenProvider
     {
-      services.AddScoped<IAccessTokenProvider, T>();
+      services.AddScoped<IBearerTokenProvider, T>();
 
       return services;
     }

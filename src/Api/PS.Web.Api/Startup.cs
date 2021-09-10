@@ -38,9 +38,9 @@ namespace PS.Web.Api
 
       services.AddDataService();
 
-      services.AddAndConfigureMvc();
+      services.AddAuthenticationAndAuthorization(this.Configuration);
 
-      services.AddAuthenticationAndAuthorization();
+      services.AddAndConfigureMvc();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMapper mapper)
@@ -57,8 +57,8 @@ namespace PS.Web.Api
       var logRequestTime = this.Configuration.GetValue<bool>("Logging:LogHttpRequestExecTime");
       app.UseCorrelationIdLogging(logRequestTime);
 
-      //app.UseAuthentication();
-      //app.UseAuthorization();
+      app.UseAuthentication();
+      app.UseAuthorization();
 
       app.UseAPIResponseWrapperMiddleware("/v1");
 
@@ -66,8 +66,7 @@ namespace PS.Web.Api
       {
         endpoints
           .MapControllers()
-          .AllowAnonymous()
-          //.RequireAuthorization()
+          .RequireAuthorization()
           ;
       });
     }

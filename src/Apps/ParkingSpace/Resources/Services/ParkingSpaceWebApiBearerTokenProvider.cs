@@ -4,9 +4,9 @@ using PS.Xamarin.Authentication;
 
 namespace ParkingSpace.Resources
 {
-  public class ParkingSpaceWebApiAccessTokenProvider : IAccessTokenProvider
+  public class ParkingSpaceWebApiBearerTokenProvider : IBearerTokenProvider
   {
-    public ParkingSpaceWebApiAccessTokenProvider(
+    public ParkingSpaceWebApiBearerTokenProvider(
       IAuthenticationService authenticationService
       )
     {
@@ -17,8 +17,15 @@ namespace ParkingSpace.Resources
 
     public async Task<string> Get()
     {
+      var isTokenExipred = await this._authenticationService.IsTokenExpiredAsync();
+      if (isTokenExipred)
+      {
+        await this._authenticationService.RefreshTokenAsync();
+      }
+
       var account = await this._authenticationService.GetUserAccountAsync();
-      return account.Properties["access_token"];
+
+      return account.Properties["id_token"];
     }
   }
 }

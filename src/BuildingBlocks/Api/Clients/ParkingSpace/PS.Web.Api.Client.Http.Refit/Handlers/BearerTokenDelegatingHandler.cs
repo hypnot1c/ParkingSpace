@@ -4,24 +4,24 @@ using System.Threading.Tasks;
 
 namespace PS.Web.Api.Client
 {
-  public class AccessTokenDelegatingHandler : DelegatingHandler
+  public class BearerTokenDelegatingHandler : DelegatingHandler
   {
-    public AccessTokenDelegatingHandler(HttpClient httpClient, IAccessTokenProvider accessTokenProvider)
+    public BearerTokenDelegatingHandler(HttpClient httpClient, IBearerTokenProvider accessTokenProvider)
     {
       this.HttpClient = httpClient;
-      this._accessTokenProvider = accessTokenProvider;
+      this._bearerTokenProvider = accessTokenProvider;
     }
 
     public HttpClient HttpClient { get; }
 
-    private readonly IAccessTokenProvider _accessTokenProvider;
+    private readonly IBearerTokenProvider _bearerTokenProvider;
 
     protected override async Task<HttpResponseMessage> SendAsync(
         HttpRequestMessage request,
         CancellationToken cancellationToken
       )
     {
-      var accessToken = await this._accessTokenProvider.Get();
+      var accessToken = await this._bearerTokenProvider.Get();
 
       request.SetBearerToken(accessToken);
       return await base.SendAsync(request, cancellationToken);

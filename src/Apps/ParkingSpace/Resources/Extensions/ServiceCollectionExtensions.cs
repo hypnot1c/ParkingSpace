@@ -70,11 +70,11 @@ namespace ParkingSpace.Resources
 
         Func<Task<Account>> accountProvider = async () =>
         {
-          var isAccessTokenExpired = await authService.IsAccessTokenExpiredAsync();
+          var isAccessTokenExpired = await authService.IsTokenExpiredAsync();
 
           if (isAccessTokenExpired)
           {
-            await authService.RefreshAccessTokenAsync();
+            await authService.RefreshTokenAsync();
           }
 
           var account = await authService.GetUserAccountAsync();
@@ -97,7 +97,7 @@ namespace ParkingSpace.Resources
         .AddParkingSpaceWebApiClient(builder => {
           builder.ConfigureBase("http://192.168.0.3:5000");
         })
-        .AddParkingSpaceWebApiAccessTokenProvider<ParkingSpaceWebApiAccessTokenProvider>()
+        .AddParkingSpaceWebApiBearerTokenProvider<ParkingSpaceWebApiBearerTokenProvider>()
         ;
 
       return services;

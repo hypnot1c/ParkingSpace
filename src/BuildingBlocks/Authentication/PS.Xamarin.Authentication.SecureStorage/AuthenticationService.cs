@@ -31,7 +31,7 @@ namespace PS.Xamarin.Authentication
       return !(this._account is null);
     }
 
-    public async Task<bool> IsAccessTokenExpiredAsync()
+    public async Task<bool> IsTokenExpiredAsync()
     {
       if (this._account is null)
       {
@@ -96,7 +96,7 @@ namespace PS.Xamarin.Authentication
       return this._account;
     }
 
-    public async Task RefreshAccessTokenAsync()
+    public async Task RefreshTokenAsync()
     {
       var account = await this.GetUserAccountAsync();
 

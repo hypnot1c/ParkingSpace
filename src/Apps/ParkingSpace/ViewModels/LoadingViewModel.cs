@@ -43,10 +43,10 @@ namespace ParkingSpace.ViewModels
 
       if (isAuthenticated)
       {
-        var isAccessTokenExpired = await this._authenticationService.IsAccessTokenExpiredAsync();
-        if (isAccessTokenExpired)
+        var isIdTokenExpired = await this._authenticationService.IsTokenExpiredAsync();
+        if (isIdTokenExpired)
         {
-          await this._authenticationService.RefreshAccessTokenAsync();
+          await this._authenticationService.RefreshTokenAsync();
         }
 
         await this.InitSessionAsync();

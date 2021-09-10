@@ -5,6 +5,7 @@ using Extensions.AspNetCore;
 using Extensions.Reflection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -75,9 +76,27 @@ namespace PS.Web.Api.Resources
     }
 
     public static IServiceCollection AddAuthenticationAndAuthorization(
-        this IServiceCollection services
+        this IServiceCollection services,
+        IConfiguration config
         )
     {
+      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(opts => opts
+          .UseGoogle(
+            clientId: config.GetValue<string>("services:Google:clientId")
+            )
+          .Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents
+          {
+            OnTokenValidated = JwtBearerEvents.OnTokenValidated
+          })
+        ;
+
+      services.AddAuthorization(opts =>
+      {
+        opts.DefaultPolicy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme)
+          .RequireAuthenticatedUser()
+          .Build();
+      });
 
       services.AddAuthorizationHandlers(typeof(Program));
 
