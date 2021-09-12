@@ -64,5 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\Parking_Group.sql" />
+    <Build Include="dbo\Tables\Parking_Place.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PublishProfiles\ParkingSpace_TEST.publish.xml" />
   </ItemGroup>
 </Project>
