@@ -18,5 +18,7 @@ namespace PS.Data.Master.Context
     }
 
     public DbSet<UserModel> Users { get; set; }
+    public DbSet<ParkingGroupModel> ParkingGroups { get; set; }
+    public DbSet<ParkingPlaceModel> ParkingSpaces { get; set; }
   }
 }
