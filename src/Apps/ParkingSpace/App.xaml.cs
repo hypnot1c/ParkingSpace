@@ -34,6 +34,9 @@ namespace ParkingSpace
       containerRegistry.RegisterForNavigation<CalendarView, CalendarViewModel>();
       containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
       containerRegistry.RegisterForNavigation<UserProfileView, UserProfileViewModel>();
+
+      containerRegistry.RegisterForNavigation<ManagementView, ManagementViewModel>();
+      containerRegistry.RegisterForNavigation<ParkingPlacesView, ParkingPlacesViewModel>();
     }
 
     private async Task NavigateToRootViewAsync()

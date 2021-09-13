@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             x:Class="ParkingSpace.Views.ManagementView">
+  <ContentPage.Title>
+    Management
+  </ContentPage.Title>
+  <ContentPage.Content>
+    <ListView
+            ItemsSource="{Binding MenuItems}"
+            SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+            SeparatorColor="LightGray"
+            RowHeight="60"
+            SeparatorVisibility="Default">
+
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout
+                    VerticalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    Padding="20,10,0,10"
+                    Spacing="20">
+
+              <Label
+                      Text="{Binding Title}"
+                      FontSize="Medium"
+                      VerticalOptions="Center"
+                      TextColor="Black"/>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+
+      <ListView.Behaviors>
+        <b:EventToCommandBehavior
+                EventName="ItemTapped" 
+                Command="{Binding NavigateCommand}" />
+      </ListView.Behaviors>
+
+    </ListView>
+  </ContentPage.Content>
+</ContentPage>

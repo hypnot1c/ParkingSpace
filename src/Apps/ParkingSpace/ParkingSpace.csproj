@@ -30,6 +30,7 @@
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.2083" />
     <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.4.5304" />
   </ItemGroup>
 
@@ -39,6 +40,12 @@
     </Compile>
     <Compile Update="Views\FlyoutView.xaml.cs">
       <DependentUpon>FlyoutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Management\ManagementView.xaml.cs">
+      <DependentUpon>ManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Management\ParkingPlaces\ParkingPlacesView.xaml.cs">
+      <DependentUpon>ParkingPlacesView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -56,6 +63,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\FlyoutView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Management\ManagementView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Management\ParkingPlaces\ParkingPlacesView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\UserProfileView.xaml">

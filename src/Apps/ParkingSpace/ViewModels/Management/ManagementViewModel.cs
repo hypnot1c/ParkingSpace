@@ -6,42 +6,28 @@ using ParkingSpace.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using PS.Web.Api.Client;
 
 namespace ParkingSpace.ViewModels
 {
-  public class FlyoutViewModel : BindableBase, IInitializeAsync
+  public class ManagementViewModel : BindableBase, IInitializeAsync
   {
-    public FlyoutViewModel(
-      ILogger<FlyoutViewModel> logger,
-      IParkingSpaceWebApiClient parkingSpaceWebApiClient,
-      INavigationService navigationService
+    public ManagementViewModel(
+      INavigationService navigationService,
+      ILogger<ManagementViewModel> logger
       )
     {
       this._navigationService = navigationService;
       this.Logger = logger;
-      this._parkingSpaceWebApiClient = parkingSpaceWebApiClient;
 
       this.MenuItems = new ObservableCollection<MenuItem>();
 
-      this.MenuItems.Add(new MenuItem()
-      {
-        Icon = "ic_viewb",
-        PageName = nameof(CalendarView),
-        Title = "Calendar"
-      });
-
       this.NavigateCommand = new DelegateCommand(this.NavigateCommandExecuted);
-
-      this.SelectedMenuItem = this.MenuItems[0];
-      this.NavigateCommandExecuted();
     }
 
     public ObservableCollection<MenuItem> MenuItems { get; set; }
-    public ILogger<FlyoutViewModel> Logger { get; }
+    public ILogger<ManagementViewModel> Logger { get; }
 
     private readonly INavigationService _navigationService;
-    private readonly IParkingSpaceWebApiClient _parkingSpaceWebApiClient;
 
     private MenuItem _selectedMenuItem;
     public MenuItem SelectedMenuItem
@@ -54,7 +40,7 @@ namespace ParkingSpace.ViewModels
 
     private async void NavigateCommandExecuted()
     {
-      var newPath = nameof(Xamarin.Forms.NavigationPage) + "/" + SelectedMenuItem.PageName;
+      var newPath = SelectedMenuItem.PageName;
       var res = await this._navigationService.NavigateAsync(newPath);
     }
 
@@ -63,8 +49,8 @@ namespace ParkingSpace.ViewModels
       this.MenuItems.Add(new MenuItem()
       {
         Icon = "ic_viewa",
-        PageName = nameof(ManagementView),
-        Title = "Management"
+        PageName = nameof(ParkingPlacesView),
+        Title = "Parking places"
       });
     }
 
