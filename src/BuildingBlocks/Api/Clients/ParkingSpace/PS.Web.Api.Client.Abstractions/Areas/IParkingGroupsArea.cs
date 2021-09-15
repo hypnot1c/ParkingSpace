@@ -4,8 +4,8 @@ using PS.Web.Api.Model.Output;
 
 namespace PS.Web.Api.Client
 {
-  public interface IParkingGroupsArea
+  public interface IParkingPlacesArea
   {
-    Task<IEnumerable<ParkingGroupOutputModel>> Get();
+    Task<IEnumerable<ParkingPlaceOutputModel>> Get();
   }
 }

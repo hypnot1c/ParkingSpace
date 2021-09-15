@@ -4,5 +4,6 @@ namespace PS.Web.Api.Client
   {
     IUsersArea Users { get; }
     IParkingPlacesArea ParkingPlaces { get; }
+    IParkingGroupsArea ParkingGroups { get; }
   }
 }

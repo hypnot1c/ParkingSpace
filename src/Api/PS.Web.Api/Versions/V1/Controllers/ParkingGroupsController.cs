@@ -8,12 +8,12 @@ using PS.Web.Api.Model.Output;
 
 namespace PS.Web.Api.Versions.V1
 {
-  public class ParkingPlacesController : ApiBaseController
+  public class ParkingGroupsController : ApiBaseController
   {
-    public ParkingPlacesController(
+    public ParkingGroupsController(
       IMapper mapper,
       IMediator mediator,
-      ILogger<ParkingPlacesController> logger
+      ILogger<ParkingGroupsController> logger
       ) : base(mapper, mediator, logger)
     {
     }
@@ -23,11 +23,11 @@ namespace PS.Web.Api.Versions.V1
     /// </summary>
     /// <returns></returns>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ParkingPlaceOutputModel>>> Get()
+    public async Task<ActionResult<IEnumerable<ParkingGroupOutputModel>>> Get()
     {
-      var psListRequest = new ParkingPlacesGetRequest();
+      var pgListRequest = new ParkingGroupsGetRequest();
 
-      var result = await this.Mediator.Send(psListRequest);
+      var result = await this.Mediator.Send(pgListRequest);
 
       return Ok(result);
     }

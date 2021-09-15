@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ParkingSpace.Views.ParkingPlacesView">
+             x:Class="ParkingSpace.Views.ParkingGroupsView">
   <ContentPage.Title>
-    Parking places
+    Parking groups
   </ContentPage.Title>
   <ContentPage.Content>
     <Grid>
       <ListView
-        HasUnevenRows="True"
-        ItemsSource="{Binding GroupedParkingPlaces}"
-        IsGroupingEnabled="True">
-        <ListView.GroupHeaderTemplate>
-          <DataTemplate>
-            <ViewCell Height="30">
-              <StackLayout>
-                <Label Text="{Binding Name}" FontSize="Large" />
-              </StackLayout>
-            </ViewCell>
-          </DataTemplate>
-        </ListView.GroupHeaderTemplate>
+        ItemsSource="{Binding ParkingGroups}">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
-              <Label Text="{Binding Number}" />
+              <Label Text="{Binding Name}" />
             </ViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>
@@ -37,8 +26,7 @@
         VerticalOptions="End"
         HorizontalOptions="End"
         Margin="25"
-        Visual="Material"
-        Command="{Binding NavigateCommand}"/>
+        Visual="Material" />
     </Grid>
   </ContentPage.Content>
 </ContentPage>

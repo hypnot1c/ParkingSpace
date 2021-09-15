@@ -5,13 +5,16 @@ namespace PS.Web.Api.Client
   {
     public ParkingSpaceWebApiHttpClient(
       IUsersArea usersArea,
-      IParkingPlacesArea parkingPlacesArea
+      IParkingPlacesArea parkingPlacesArea,
+      IParkingGroupsArea parkingGroupsArea
       )
     {
       this.Users = usersArea;
       this.ParkingPlaces = parkingPlacesArea;
+      this.ParkingGroups = parkingGroupsArea;
     }
     public IUsersArea Users { get; }
     public IParkingPlacesArea ParkingPlaces { get; }
+    public IParkingGroupsArea ParkingGroups { get; }
   }
 }
