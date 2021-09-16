@@ -38,6 +38,7 @@ namespace ParkingSpace
       containerRegistry.RegisterForNavigation<ManagementView, ManagementViewModel>();
       containerRegistry.RegisterForNavigation<ParkingPlacesView, ParkingPlacesViewModel>();
       containerRegistry.RegisterForNavigation<ParkingGroupsView, ParkingGroupsViewModel>();
+      containerRegistry.RegisterForNavigation<ParkingGroupView, ParkingGroupViewModel>();
     }
 
     private async Task NavigateToRootViewAsync()

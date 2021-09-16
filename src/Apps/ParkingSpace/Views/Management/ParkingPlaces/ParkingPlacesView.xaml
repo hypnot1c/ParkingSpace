@@ -38,7 +38,7 @@
         HorizontalOptions="End"
         Margin="25"
         Visual="Material"
-        Command="{Binding NavigateCommand}"/>
+        Command="{Binding NavigateCommand}" />
     </Grid>
   </ContentPage.Content>
 </ContentPage>

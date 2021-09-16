@@ -26,7 +26,8 @@
         VerticalOptions="End"
         HorizontalOptions="End"
         Margin="25"
-        Visual="Material" />
+        Visual="Material"
+        Command="{Binding NavigateCommand}" />
     </Grid>
   </ContentPage.Content>
 </ContentPage>
