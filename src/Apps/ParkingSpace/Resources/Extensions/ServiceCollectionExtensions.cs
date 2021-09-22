@@ -97,7 +97,7 @@ namespace ParkingSpace.Resources
         .AddParkingSpaceWebApiClient(builder => {
           builder.ConfigureBase("http://192.168.0.3:5000");
         })
-        .AddParkingSpaceWebApiBearerTokenProvider<ParkingSpaceWebApiBearerTokenProvider>()
+        .AddBearerTokenProvider<ParkingSpaceWebApiBearerTokenProvider>()
         ;
 
       return services;

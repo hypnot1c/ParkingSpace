@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using PS.Web.Api.Client;
+using Authorization.Abstractions;
 using PS.Xamarin.Authentication;
 
 namespace ParkingSpace.Resources

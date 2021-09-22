@@ -94,13 +94,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityFrameworkCore", "Enti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.EntityFrameworkCore", "src\BuildingBlocks\Extensions\EntityFrameworkCore\Extensions.EntityFrameworkCore\Extensions.EntityFrameworkCore.csproj", "{07AF155A-9B4F-4427-AAE0-A6963F0482C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS.DataService.Abstractions", "src\BuildingBlocks\DataAccess\PS.DataService.Abstractions\PS.DataService.Abstractions.csproj", "{480DF7A4-36C4-4A29-914A-70064FE038A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PS.DataService.Abstractions", "src\BuildingBlocks\DataAccess\PS.DataService.Abstractions\PS.DataService.Abstractions.csproj", "{480DF7A4-36C4-4A29-914A-70064FE038A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS.DataService.MemoryCache", "src\BuildingBlocks\DataAccess\PS.DataService.MemoryCache\PS.DataService.MemoryCache.csproj", "{A4E4B53D-5D05-4FC6-95D2-B09BE8A11D87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PS.DataService.MemoryCache", "src\BuildingBlocks\DataAccess\PS.DataService.MemoryCache\PS.DataService.MemoryCache.csproj", "{A4E4B53D-5D05-4FC6-95D2-B09BE8A11D87}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reflection", "Reflection", "{84863939-1400-4AF7-871C-C885AB3CCC8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.Reflection", "src\BuildingBlocks\Extensions\Reflection\Extensions.Reflection\Extensions.Reflection.csproj", "{6001EB0B-C680-43DC-9F2A-7D55C154A7D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.Reflection", "src\BuildingBlocks\Extensions\Reflection\Extensions.Reflection\Extensions.Reflection.csproj", "{6001EB0B-C680-43DC-9F2A-7D55C154A7D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authorization", "Authorization", "{2114FA60-99BE-43E4-BD11-526618EF8BC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Abstractions", "src\BuildingBlocks\Authorization\Authorization.Abstractions\Authorization.Abstractions.csproj", "{10BD1350-7D97-41EA-870F-245C4BF35C83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -782,6 +786,30 @@ Global
 		{6001EB0B-C680-43DC-9F2A-7D55C154A7D7}.Release|x64.Build.0 = Release|Any CPU
 		{6001EB0B-C680-43DC-9F2A-7D55C154A7D7}.Release|x86.ActiveCfg = Release|Any CPU
 		{6001EB0B-C680-43DC-9F2A-7D55C154A7D7}.Release|x86.Build.0 = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|ARM.Build.0 = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|x64.Build.0 = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Debug|x86.Build.0 = Debug|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|ARM.ActiveCfg = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|ARM.Build.0 = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|iPhone.Build.0 = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|x64.ActiveCfg = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|x64.Build.0 = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|x86.ActiveCfg = Release|Any CPU
+		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -831,6 +859,8 @@ Global
 		{A4E4B53D-5D05-4FC6-95D2-B09BE8A11D87} = {2EDD4541-154F-4901-8D7B-8EAEB0D56412}
 		{84863939-1400-4AF7-871C-C885AB3CCC8F} = {81C9F38A-1E50-4078-A006-844083334205}
 		{6001EB0B-C680-43DC-9F2A-7D55C154A7D7} = {84863939-1400-4AF7-871C-C885AB3CCC8F}
+		{2114FA60-99BE-43E4-BD11-526618EF8BC5} = {102262AC-4838-4DA5-AA4C-FBA98A8B127A}
+		{10BD1350-7D97-41EA-870F-245C4BF35C83} = {2114FA60-99BE-43E4-BD11-526618EF8BC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B54E048C-50F2-4F11-9EB0-7463ABD29D83}

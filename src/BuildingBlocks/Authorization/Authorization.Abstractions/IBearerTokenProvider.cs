@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace PS.Web.Api.Client
+namespace Authorization.Abstractions
 {
   public interface IBearerTokenProvider
   {

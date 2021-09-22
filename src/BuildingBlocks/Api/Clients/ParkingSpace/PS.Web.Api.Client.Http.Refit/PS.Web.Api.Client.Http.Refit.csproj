@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Models\PS.Web.Api\PS.Web.Api.Model.Output\PS.Web.Api.Model.Output.csproj" />
+    <ProjectReference Include="..\..\..\..\Authorization\Authorization.Abstractions\Authorization.Abstractions.csproj" />
     <ProjectReference Include="..\..\..\Models\Wep.Api.Model\Wep.Api.Model.csproj" />
     <ProjectReference Include="..\PS.Web.Api.Client.Abstractions\PS.Web.Api.Client.Abstractions.csproj" />
   </ItemGroup>

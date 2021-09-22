@@ -1,6 +1,7 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Authorization.Abstractions;
 
 namespace PS.Web.Api.Client
 {

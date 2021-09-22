@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using ParkingSpace.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -41,8 +40,9 @@ namespace ParkingSpace.ViewModels
 
       var result = await this._parkingSpaceWebApiClient.ParkingGroups.Create(im);
 
-      var newPath = nameof(ParkingGroupsView);
-      var res = await this._navigationService.NavigateAsync(newPath);
+      //var newPath = nameof(ParkingGroupsView);
+      //var res = await this._navigationService.NavigateAsync(newPath);
+      await this._navigationService.GoBackAsync();
     }
 
     public async Task InitializeAsync(INavigationParameters parameters)

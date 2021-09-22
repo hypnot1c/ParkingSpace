@@ -8,11 +8,11 @@ namespace PS.Web.Api.Client
 {
   public static class ServiceCollectionExtensions
   {
-    public static IServiceCollection AddParkingSpaceWebApiClient(this IServiceCollection services, Action<ParkingSpaceWebApiOptionsBuilder> buildAction)
+    public static IParkingSpaceWebApiClientBuilder AddParkingSpaceWebApiClient(this IServiceCollection services, Action<ParkingSpaceWebApiOptionsBuilder> buildAction)
     {
-      var builder = new ParkingSpaceWebApiOptionsBuilder();
-      buildAction?.Invoke(builder);
-      var opts = builder.Build();
+      var optsBuilder = new ParkingSpaceWebApiOptionsBuilder();
+      buildAction?.Invoke(optsBuilder);
+      var opts = optsBuilder.Build();
 
       typeof(AssemblyMarker).Assembly
         .HttpInterfaces()
@@ -33,14 +33,9 @@ namespace PS.Web.Api.Client
       services.AddScoped<BearerTokenDelegatingHandler>();
       services.AddDefaults();
 
-      return services;
-    }
+      var builder = new ParkingSpaceWebApiClientBuilder(services);
 
-    public static IServiceCollection AddParkingSpaceWebApiBearerTokenProvider<T>(this IServiceCollection services) where T : class, IBearerTokenProvider
-    {
-      services.AddScoped<IBearerTokenProvider, T>();
-
-      return services;
+      return builder;
     }
 
     private static IServiceCollection AddDefaults(this IServiceCollection services)
