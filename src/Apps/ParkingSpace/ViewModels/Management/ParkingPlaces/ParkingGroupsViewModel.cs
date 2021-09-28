@@ -33,7 +33,7 @@ namespace ParkingSpace.ViewModels
     private async void NavigateCommandExecuted()
     {
       var newPath = nameof(ParkingGroupView);
-      var res = await this._navigationService.NavigateAsync(newPath);
+      var res = await this._navigationService.NavigateAsync($"NavigationPage/{newPath}", null, true);
     }
 
     public async Task InitializeAsync(INavigationParameters parameters)
