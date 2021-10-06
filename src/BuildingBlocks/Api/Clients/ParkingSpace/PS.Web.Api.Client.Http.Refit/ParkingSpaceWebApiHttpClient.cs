@@ -1,20 +1,16 @@
+using PS.Web.Api.Client.V1;
+
 namespace PS.Web.Api.Client
 {
   [DefaultFor(typeof(IParkingSpaceWebApiClient))]
   public class ParkingSpaceWebApiHttpClient : IParkingSpaceWebApiClient
   {
     public ParkingSpaceWebApiHttpClient(
-      IUsersArea usersArea,
-      IParkingPlacesArea parkingPlacesArea,
-      IParkingGroupsArea parkingGroupsArea
+      IV1VersionArea v1VersionArea
       )
     {
-      this.Users = usersArea;
-      this.ParkingPlaces = parkingPlacesArea;
-      this.ParkingGroups = parkingGroupsArea;
+      this.V1 = v1VersionArea;
     }
-    public IUsersArea Users { get; }
-    public IParkingPlacesArea ParkingPlaces { get; }
-    public IParkingGroupsArea ParkingGroups { get; }
+    public IV1VersionArea V1 { get; }
   }
 }

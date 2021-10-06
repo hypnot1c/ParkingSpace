@@ -5,7 +5,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using PS.Web.Api.Client;
-using PS.Web.Api.Model.Output;
+using PS.Web.Api.Model.Output.V1.Management;
 
 namespace ParkingSpace.ViewModels
 {
@@ -21,7 +21,8 @@ namespace ParkingSpace.ViewModels
 
       this.ParkingGroups = new ObservableCollection<ParkingGroupOutputModel>();
 
-      this.NavigateCommand = new DelegateCommand(this.NavigateCommandExecuted);
+      this.CreateCommand = new DelegateCommand(this.CreateCommandExecuted);
+      this.EditCommand = new DelegateCommand<ParkingGroupOutputModel>(this.EditCommandExecuted, this.CanEdit);
     }
 
     private readonly IParkingSpaceWebApiClient _parkingSpaceWebApiClient;
@@ -29,16 +30,32 @@ namespace ParkingSpace.ViewModels
 
     public ObservableCollection<ParkingGroupOutputModel> ParkingGroups { get; set; }
 
-    public DelegateCommand NavigateCommand { get; }
-    private async void NavigateCommandExecuted()
+    public DelegateCommand CreateCommand { get; }
+    public DelegateCommand<ParkingGroupOutputModel> EditCommand { get; }
+    private async void CreateCommandExecuted()
     {
       var newPath = nameof(ParkingGroupView);
       var res = await this._navigationService.NavigateAsync($"NavigationPage/{newPath}", null, true);
     }
 
+    private async void EditCommandExecuted(ParkingGroupOutputModel item)
+    {
+      var newPath = nameof(ParkingGroupEditView);
+
+      var args = new NavigationParameters();
+      args.Add("groupId", item.Id);
+
+      var res = await this._navigationService.NavigateAsync($"NavigationPage/{newPath}", args, true);
+    }
+
+    bool CanEdit(ParkingGroupOutputModel parameter)
+    {
+      return true;
+    }
+
     public async Task InitializeAsync(INavigationParameters parameters)
     {
-      var pgList = await this._parkingSpaceWebApiClient.ParkingGroups.Get();
+      var pgList = await this._parkingSpaceWebApiClient.V1.Management.ParkingGroups.Get();
 
       foreach (var item in pgList)
       {

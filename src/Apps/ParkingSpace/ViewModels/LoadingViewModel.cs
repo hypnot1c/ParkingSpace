@@ -61,7 +61,7 @@ namespace ParkingSpace.ViewModels
     {
       var authUser = await this._googleApiClient.GetUserAsync();
 
-      var user = await this._parkingSpaceWebApiClient.Users.Get(authUser.Email);
+      var user = await this._parkingSpaceWebApiClient.V1.Users.Get(authUser.Email);
 
       this._sessionService.SetSessionUser(user);
     }

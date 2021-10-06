@@ -7,7 +7,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using PS.Web.Api.Client;
-using PS.Web.Api.Model.Output;
+using PS.Web.Api.Model.Output.V1.Management;
 
 namespace ParkingSpace.ViewModels
 {
@@ -40,7 +40,7 @@ namespace ParkingSpace.ViewModels
 
     public async Task InitializeAsync(INavigationParameters parameters)
     {
-      var psList = await this._parkingSpaceWebApiClient.ParkingPlaces.Get();
+      var psList = await this._parkingSpaceWebApiClient.V1.Management.ParkingPlaces.Get();
 
       var grouped = psList
         .GroupBy(k => k.Group.Name)

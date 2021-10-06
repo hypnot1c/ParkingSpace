@@ -32,7 +32,7 @@ namespace ParkingSpace.Mediator
 
       var userInputModel = TinyMapper.Map<UserInputModel>(googleUser);
 
-      var user = await this._psWebApiClient.Users.EnsureCreated(userInputModel);
+      var user = await this._psWebApiClient.V1.Users.EnsureCreated(userInputModel);
 
       this._sessionService.SetSessionUser(user);
     }

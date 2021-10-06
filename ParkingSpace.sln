@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B4DD7987-CB9D-48DF-AF2B-8F1B0DC689FB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2661BCFE-2EFF-4790-9734-398DAE9F76F4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2661BCFE-2EFF-4790-9734-398DAE9F76F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{B8D838CE-4E2D-4232-8816-EBCA9DFBE5EC}"
 EndProject
@@ -104,7 +104,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.Reflection", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authorization", "Authorization", "{2114FA60-99BE-43E4-BD11-526618EF8BC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Abstractions", "src\BuildingBlocks\Authorization\Authorization.Abstractions\Authorization.Abstractions.csproj", "{10BD1350-7D97-41EA-870F-245C4BF35C83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Abstractions", "src\BuildingBlocks\Authorization\Authorization.Abstractions\Authorization.Abstractions.csproj", "{10BD1350-7D97-41EA-870F-245C4BF35C83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{26770462-E419-42C5-B7E2-2A540FCA6EC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{13F3A3DF-6866-4BD4-B788-9BFFA235E735}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ParkingSpace", "ParkingSpace", "{5F8033AA-4CE2-4735-BFFB-F13767D49B3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS.Web.Api.Client.Http.Refit.IntegrationTests", "test\Api\Clients\ParkingSpace\PS.Web.Api.Client.Http.Refit.IntegrationTests\PS.Web.Api.Client.Http.Refit.IntegrationTests.csproj", "{DAD3D295-5780-45A6-B0D2-412326F32B77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -810,6 +818,30 @@ Global
 		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|x64.Build.0 = Release|Any CPU
 		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|x86.ActiveCfg = Release|Any CPU
 		{10BD1350-7D97-41EA-870F-245C4BF35C83}.Release|x86.Build.0 = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|ARM.Build.0 = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|x64.Build.0 = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Debug|x86.Build.0 = Debug|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|ARM.ActiveCfg = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|ARM.Build.0 = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|iPhone.Build.0 = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|x64.ActiveCfg = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|x64.Build.0 = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|x86.ActiveCfg = Release|Any CPU
+		{DAD3D295-5780-45A6-B0D2-412326F32B77}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -861,6 +893,10 @@ Global
 		{6001EB0B-C680-43DC-9F2A-7D55C154A7D7} = {84863939-1400-4AF7-871C-C885AB3CCC8F}
 		{2114FA60-99BE-43E4-BD11-526618EF8BC5} = {102262AC-4838-4DA5-AA4C-FBA98A8B127A}
 		{10BD1350-7D97-41EA-870F-245C4BF35C83} = {2114FA60-99BE-43E4-BD11-526618EF8BC5}
+		{26770462-E419-42C5-B7E2-2A540FCA6EC2} = {2661BCFE-2EFF-4790-9734-398DAE9F76F4}
+		{13F3A3DF-6866-4BD4-B788-9BFFA235E735} = {26770462-E419-42C5-B7E2-2A540FCA6EC2}
+		{5F8033AA-4CE2-4735-BFFB-F13767D49B3C} = {13F3A3DF-6866-4BD4-B788-9BFFA235E735}
+		{DAD3D295-5780-45A6-B0D2-412326F32B77} = {5F8033AA-4CE2-4735-BFFB-F13767D49B3C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B54E048C-50F2-4F11-9EB0-7463ABD29D83}

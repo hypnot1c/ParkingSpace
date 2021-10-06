@@ -1,5 +1,5 @@
 using MediatR;
-using PS.Web.Api.Model.Output;
+using PS.Web.Api.Model.Output.V1;
 
 namespace PS.Web.Api.Versions.V1
 {

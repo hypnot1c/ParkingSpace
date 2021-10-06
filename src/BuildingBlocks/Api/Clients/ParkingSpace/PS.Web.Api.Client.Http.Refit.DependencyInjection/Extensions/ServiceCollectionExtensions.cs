@@ -14,6 +14,10 @@ namespace PS.Web.Api.Client
       buildAction?.Invoke(optsBuilder);
       var opts = optsBuilder.Build();
 
+      var t = typeof(AssemblyMarker).Assembly
+        .HttpInterfaces()
+        .ToList();
+
       typeof(AssemblyMarker).Assembly
         .HttpInterfaces()
         .ToList()

@@ -16,7 +16,7 @@ namespace ParkingSpace.MappingProfiles
         config.Ignore(s => s.Name);
       });
 
-      TinyMapper.Bind<PS.Web.Api.Model.Output.UserOutputModel, PS.Model.UserSessionModel>(config =>
+      TinyMapper.Bind<PS.Web.Api.Model.Output.V1.UserOutputModel, PS.Model.UserSessionModel>(config =>
       {
         config.Bind(s => s.Id, d => d.Id);
         config.Bind(s => s.Firstname, d => d.Firstname);

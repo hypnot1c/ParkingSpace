@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PS.Data.Master.Model;
 using PS.Web.Api.Model.Input;
-using PS.Web.Api.Model.Output;
+using PS.Web.Api.Model.Output.V1;
 
 namespace PS.Web.Api.Versions.V1
 {

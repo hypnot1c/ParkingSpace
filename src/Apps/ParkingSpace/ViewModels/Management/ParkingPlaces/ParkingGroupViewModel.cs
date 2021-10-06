@@ -38,7 +38,7 @@ namespace ParkingSpace.ViewModels
         Name = this.Name
       };
 
-      var result = await this._parkingSpaceWebApiClient.ParkingGroups.Create(im);
+      var result = await this._parkingSpaceWebApiClient.V1.Management.ParkingGroups.Create(im);
 
       //var newPath = nameof(ParkingGroupsView);
       //var res = await this._navigationService.NavigateAsync(newPath);

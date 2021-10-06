@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ParkingSpace.Views.ParkingGroupsView">
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+  x:Class="ParkingSpace.Views.ParkingGroupsView">
   <ContentPage.Title>
     Parking groups
   </ContentPage.Title>
   <ContentPage.Content>
     <Grid>
       <ListView
-        ItemsSource="{Binding ParkingGroups}">
+        ItemsSource="{Binding ParkingGroups}"
+        >
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
@@ -16,6 +19,13 @@
             </ViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>
+        
+        <ListView.Behaviors>
+          <b:EventToCommandBehavior
+            EventName="ItemTapped"
+            EventArgsParameterPath="Item"
+            Command="{Binding EditCommand}" />
+        </ListView.Behaviors>
       </ListView>
       <Button FontSize="50"
         Text="+"
@@ -27,7 +37,7 @@
         HorizontalOptions="End"
         Margin="25"
         Visual="Material"
-        Command="{Binding NavigateCommand}" />
+        Command="{Binding CreateCommand}" />
     </Grid>
   </ContentPage.Content>
 </ContentPage>
