@@ -9,6 +9,8 @@ namespace PS.Web.Api.Client.V1
 {
   public partial interface IV1HttpInterface
   {
+    [Get("/v1/management/parkingGroups/{id}")]
+    Task<OkApiResponse<ParkingGroupOutputModel>> Management_ParkingGroup_Get(int id);
     [Get("/v1/management/parkingGroups")]
     Task<OkApiResponse<IEnumerable<ParkingGroupOutputModel>>> Management_ParkingGroup_Get();
 

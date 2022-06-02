@@ -24,9 +24,9 @@ namespace PS.Web.Api.Versions.V1.Management
     /// </summary>
     /// <returns></returns>
     [HttpGet("{id}")]
-    public async Task<ActionResult<IEnumerable<ParkingGroupOutputModel>>> Get(int id)
+    public async Task<ActionResult<ParkingGroupOutputModel>> Get(int id)
     {
-      var pgListRequest = new ParkingGroupsGetRequest();
+      var pgListRequest = new ParkingGroupGetRequest(id);
 
       var result = await this.Mediator.Send(pgListRequest);
 

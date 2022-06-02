@@ -5,11 +5,22 @@
   <ContentPage.Title>
     Parking group
   </ContentPage.Title>
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+  <ContentPage.Content>
+    <StackLayout Orientation="Horizontal">
+      <Label
+        Text="Group name:"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+      <Entry
+        Text="{Binding Name}"
+        Placeholder="Group name..."
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+      <Button
+        Text="Save"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        Command="{Binding SaveCommand}" />
+    </StackLayout>
+  </ContentPage.Content>
 </ContentPage>

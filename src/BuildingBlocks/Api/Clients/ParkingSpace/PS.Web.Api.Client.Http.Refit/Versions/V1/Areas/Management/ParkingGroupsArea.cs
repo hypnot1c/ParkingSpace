@@ -16,6 +16,20 @@ namespace PS.Web.Api.Client.V1.Management
 
     private readonly IV1HttpInterface _http;
 
+    public async Task<ParkingGroupOutputModel> Get(int id)
+    {
+      try
+      {
+        var response = await this._http.Management_ParkingGroup_Get(id);
+
+        return response.Result;
+      }
+      catch (ApiException ex)
+      {
+        throw new ParkingSpaceWebApiClientException($"An error occuted on the request. See more details in the inner exception.", ex);
+      }
+    }
+
     public async Task<IEnumerable<ParkingGroupOutputModel>> Get()
     {
       try

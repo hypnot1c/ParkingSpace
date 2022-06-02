@@ -37,14 +37,13 @@ namespace PS.Web.Api.Resources
         fv.RegisterValidatorsFromAssemblyContaining<Model.Input.AssemblyMarker>();
         fv.ImplicitlyValidateChildProperties = true;
         fv.DisableDataAnnotationsValidation = true;
-        ValidatorOptions.Global.CascadeMode = CascadeMode.Stop;
+        ValidatorOptions.Global.DefaultClassLevelCascadeMode = CascadeMode.Stop;
       })
       .AddNewtonsoftJson(o =>
       {
         o.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
       })
-      .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
       ;
 
       return services;

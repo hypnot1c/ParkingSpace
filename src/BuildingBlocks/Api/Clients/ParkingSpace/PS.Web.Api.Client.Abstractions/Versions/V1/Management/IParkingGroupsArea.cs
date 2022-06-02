@@ -7,6 +7,7 @@ namespace PS.Web.Api.Client.V1.Management
 {
   public interface IParkingGroupsArea
   {
+    Task<ParkingGroupOutputModel> Get(int id);
     Task<IEnumerable<ParkingGroupOutputModel>> Get();
     Task<ParkingGroupOutputModel> Create(ParkingGroupInputModel im);
   }
