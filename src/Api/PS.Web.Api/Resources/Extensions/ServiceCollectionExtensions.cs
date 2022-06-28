@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using Extensions.AspNetCore;
 using Extensions.Reflection;
 using FluentValidation;
@@ -12,7 +13,6 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Serialization;
 using PS.Data.Master.Context;
 using PS.DataService;
 
@@ -32,17 +32,15 @@ namespace PS.Web.Api.Resources
         opt.Filters.Add(new AuthorizeFilter());
         opt.Filters.Add<GlobalExceptionFilter>();
       })
+      .AddJsonOptions(opts =>
+      {
+        opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+      })
       .AddFluentValidation(fv =>
       {
         fv.RegisterValidatorsFromAssemblyContaining<Model.Input.AssemblyMarker>();
-        fv.ImplicitlyValidateChildProperties = true;
         fv.DisableDataAnnotationsValidation = true;
         ValidatorOptions.Global.DefaultClassLevelCascadeMode = CascadeMode.Stop;
-      })
-      .AddNewtonsoftJson(o =>
-      {
-        o.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-        o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
       })
       ;
 
